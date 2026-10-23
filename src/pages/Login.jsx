@@ -29,7 +29,7 @@ function Login() {
         </form>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="bg-surface">
         <Button type="submit" className="w-full">
           Entrar
         </Button>

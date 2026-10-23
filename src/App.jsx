@@ -5,7 +5,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="bg-background h-dvh w-full relative">
-      <Home></Home>
+      <Login></Login>
     </div>
   );
 }
