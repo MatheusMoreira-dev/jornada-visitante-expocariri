@@ -25,7 +25,7 @@ import { useForm, Controller } from "react-hook-form";
 
 import { upperFirstLetter } from "@/utils/str.js";
 
-function Login() {
+function RegistrationForm() {
   const {
     handleSubmit,
     control,
@@ -41,10 +41,11 @@ function Login() {
 
   const onSubmit = (data) => {
     console.log(data);
+    addParticipante(data);
   };
 
   return (
-    <Card className="bg-surface w-full max-w-sm absolute top-1/2 left-1/2 -translate-1/2">
+    <Card>
       <CardHeader>
         <CardTitle className="text-primary-text font-bold">
           Participe do nosso Sorteio!
@@ -202,11 +203,11 @@ function Login() {
 
       <CardFooter className="bg-surface">
         <Button type="submit" className="w-full" form="form-login">
-          Entrar
+          Cadastrar
         </Button>
       </CardFooter>
     </Card>
   );
 }
 
-export default Login;
+export default RegistrationForm;

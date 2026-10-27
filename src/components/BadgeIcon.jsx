@@ -1,6 +1,6 @@
-function BadgeIcon({ badge, blocked = false }) {
+function BadgeIcon({ badge }) {
   return (
-    <div className="rounded-full overflow-hidden size-20 p-2 shadow-2xl bg-white/10 ring-1 ring-white/40 backdrop-blur-xl">
+    <div className="rounded-full overflow-hidden size-20 p-2 bg-white/10 ring-1 ring-white/40 backdrop-blur-xl">
       <img src={badge.icon} className="size-full object-center object-cover" />
 
       {/* Reflexo do vidro */}
