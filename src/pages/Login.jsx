@@ -23,6 +23,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { addParticipante } from "@/services/api";
 import { useForm, Controller } from "react-hook-form";
 
+import { upperFirstLetter } from "@/utils/str.js";
+
 function Login() {
   const {
     handleSubmit,
@@ -69,7 +71,13 @@ function Login() {
               <div>
                 <Field>
                   <FieldLabel>Nome</FieldLabel>
-                  <Input type="text" {...field}></Input>
+                  <Input
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(upperFirstLetter(e.target.value))
+                    }
+                    type="text"
+                  ></Input>
                 </Field>
 
                 <p className="text-xs text-destructive mt-1">
@@ -115,7 +123,12 @@ function Login() {
               <div>
                 <Field>
                   <FieldLabel>Cidade</FieldLabel>
-                  <Input {...field}></Input>
+                  <Input
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(upperFirstLetter(e.target.value))
+                    }
+                  ></Input>
                 </Field>
 
                 <p className="text-xs text-destructive mt-1">
