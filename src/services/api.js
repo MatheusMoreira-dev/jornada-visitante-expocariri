@@ -1,12 +1,20 @@
 import { db } from "@/services/firebase.js";
-import { ref, set } from "firebase/database";
+import { ref, set, get } from "firebase/database";
 
-function addParticipante({ data }) {
-  set(ref(db, "participantes", data.celular), {
+async function cadastrar({ data }) {
+  const celular = data.celular.replace(/\D/g, "");
+  const participantesRef = ref(db, `participantes/${celular}`);
+
+  const snapshot = await get(participantesRef);
+
+  if (snapshot.exists()) throw new Error("Este telefone já está cadastrado!");
+
+  await set(participantesRef, {
     ...data,
+    celular,
   });
 }
 
-function login({}) {}
+function login({ data }) {}
 
-export { addParticipante };
+export { cadastrar, login };
