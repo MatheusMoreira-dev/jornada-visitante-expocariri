@@ -27,7 +27,7 @@ const badges = [
 
 function Home() {
   return (
-    <div className="max-w-5xl flex max-h-full flex-col overflow-hidden">
+    <div className="max-w-5xl mx-auto flex max-h-full flex-col overflow-hidden">
       <BadgePanel badges={badges}></BadgePanel>
     </div>
   );
