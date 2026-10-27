@@ -22,6 +22,7 @@ function BadgePanel({ badges = [] }) {
     const json = JSON.parse(str);
 
     console.log(json);
+    alert(str);
   }
 
   function onErrorScan(err) {
