@@ -17,6 +17,17 @@ import QRCodeReader from "./QRCodeReader";
 function BadgePanel({ badges = [] }) {
   let [atual, total] = [3, 5];
 
+  function onSucessScan(result) {
+    const str = result[0].rawValue;
+    const json = JSON.parse(str);
+
+    console.log(json);
+  }
+
+  function onErrorScan(err) {
+    console.log(err);
+  }
+
   return (
     <div className="grid flex-1 min-h-0 gap-3 max-w-sm mx-auto p-2 my-5">
       <Progress value={(atual / total) * 100} className="w-full max-w-sm">
@@ -37,7 +48,10 @@ function BadgePanel({ badges = [] }) {
           </DialogTrigger>
 
           <DialogContent>
-            <QRCodeReader></QRCodeReader>
+            <QRCodeReader
+              onSucess={onSucessScan}
+              onError={onErrorScan}
+            ></QRCodeReader>
           </DialogContent>
         </Dialog>
       </div>

@@ -8,11 +8,11 @@ function QRCodeReader({ onSucess, onError }) {
         onError={onError}
         formats={["qr_code"]}
         components={{ audio: false, finder: false }}
-        constraints={{ facingMode: "environment" }}
+        constraints={{ facingMode: "environment", aspectRatio: 1 }}
       />
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="max-w-48 max-h-48 size-full rounded-2xl border-2 border-dashed border-primary" />
+        <div className="size-full rounded-2xl border-2 border-dashed border-primary" />
       </div>
     </div>
   );
