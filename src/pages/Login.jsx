@@ -25,11 +25,17 @@ import { useForm, Controller } from "react-hook-form";
 
 function Login() {
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({ defaultValues: { nome: "", celular: "" } });
+  } = useForm({
+    defaultValues: {
+      nome: "",
+      celular: "55",
+      cidade: "",
+      perguntaConhecerPlanos: "",
+    },
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -52,13 +58,26 @@ function Login() {
           onSubmit={handleSubmit(onSubmit)}
           className="grid gap-4"
         >
-          <Field>
-            <FieldLabel>Nome</FieldLabel>
-            <Input
-              type="text"
-              {...register("nome", { required: "Digite o seu nome completo!" })}
-            ></Input>
-          </Field>
+          <Controller
+            name="nome"
+            control={control}
+            rules={{
+              required: "Campo obrigatório!",
+              validate: "Digite um nome válido!",
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <Field>
+                  <FieldLabel>Nome</FieldLabel>
+                  <Input type="text" {...field}></Input>
+                </Field>
+
+                <p className="text-xs text-destructive mt-1">
+                  {fieldState.error?.message}
+                </p>
+              </div>
+            )}
+          ></Controller>
 
           <Controller
             name="celular"
@@ -88,77 +107,83 @@ function Login() {
           <Controller
             name="cidade"
             control={control}
-            rules={{ required: "Campo obrigatório!" }}
-            render={({ field }) => (
-              <Field>
-                <FieldLabel>Cidade</FieldLabel>
-                <Input {...field}></Input>
-              </Field>
+            rules={{
+              required: "Campo obrigatório!",
+              validate: "Digite um nome de cidade válido!",
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <Field>
+                  <FieldLabel>Cidade</FieldLabel>
+                  <Input {...field}></Input>
+                </Field>
+
+                <p className="text-xs text-destructive mt-1">
+                  {fieldState.error?.message}
+                </p>
+              </div>
             )}
           ></Controller>
 
-          <Field>
-            <FieldLabel>
-              Você teria interesse em conhecer as opções de planos de saúde da
-              Unimed Cariri?
-            </FieldLabel>
+          <Controller
+            name="perguntaConhecerPlanos"
+            control={control}
+            rules={{
+              required: "Campos obrigatório!",
+              validate: "Selecione um campo válido!",
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <Field>
+                  <FieldLabel>
+                    Você teria interesse em receber informações sobre os planos
+                    de saúde da Unimed Cariri?
+                  </FieldLabel>
 
-            <RadioGroup className="grid grid-cols-2">
-              <FieldLabel>
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Sim, tenho interesse.</FieldTitle>
-                  </FieldContent>
-                  <RadioGroupItem value={"tem interesse"}></RadioGroupItem>
+                  <RadioGroup
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    className="grid grid-cols-2"
+                  >
+                    <FieldLabel>
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Sim, tenho interesse.</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem
+                          value={"tem interesse"}
+                        ></RadioGroupItem>
+                      </Field>
+                    </FieldLabel>
+
+                    <FieldLabel>
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Não tenho interesse.</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem
+                          value={"não tem interesse"}
+                        ></RadioGroupItem>
+                      </Field>
+                    </FieldLabel>
+
+                    <FieldLabel className="col-span-2 justify-self-center">
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Já possuo plano de saúde.</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem value={"já possue"}></RadioGroupItem>
+                      </Field>
+                    </FieldLabel>
+                  </RadioGroup>
                 </Field>
-              </FieldLabel>
 
-              <FieldLabel>
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Não tenho interesse.</FieldTitle>
-                  </FieldContent>
-                  <RadioGroupItem value={"não tem interesse"}></RadioGroupItem>
-                </Field>
-              </FieldLabel>
-
-              <FieldLabel className="col-span-2 justify-self-center">
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Já possuo plano de saúde.</FieldTitle>
-                  </FieldContent>
-                  <RadioGroupItem value={"já possue"}></RadioGroupItem>
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-          </Field>
-
-          <Field>
-            <FieldLabel>
-              Você aceita receber informações sobre planos de saúde e propostas
-              comerciais?
-            </FieldLabel>
-
-            <RadioGroup className="flex">
-              <FieldLabel>
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Sim, autorizo.</FieldTitle>
-                  </FieldContent>
-                  <RadioGroupItem value={true}></RadioGroupItem>
-                </Field>
-              </FieldLabel>
-
-              <FieldLabel>
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Não autorizo.</FieldTitle>
-                  </FieldContent>
-                  <RadioGroupItem value={false}></RadioGroupItem>
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-          </Field>
+                <p className="text-xs text-destructive mt-1">
+                  {fieldState.error?.message}
+                </p>
+              </div>
+            )}
+          ></Controller>
         </form>
       </CardContent>
 
