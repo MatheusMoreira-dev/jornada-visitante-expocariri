@@ -3,8 +3,8 @@ import RegistrationForm from "@/components/RegistrationForm";
 
 function Auth() {
   return (
-    <Tabs className="w-full max-w-sm absolute top-1/2 left-1/2 -translate-1/2">
-      <TabsList>
+    <Tabs className="w-full max-w-sm mx-auto py-5">
+      <TabsList className="sticky top-2">
         <TabsTrigger value="cadastro">Cadastrar</TabsTrigger>
         <TabsTrigger value="login">Entrar</TabsTrigger>
       </TabsList>
