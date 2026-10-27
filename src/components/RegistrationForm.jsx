@@ -36,6 +36,7 @@ import { useForm, Controller } from "react-hook-form";
 
 import { upperFirstLetter } from "@/utils/str.js";
 import { useState } from "react";
+import { replace, useNavigate } from "react-router";
 
 function ModalStatus({ modalContent, modalOpen, setModalOpen }) {
   const Icon = modalContent?.icon;
@@ -62,6 +63,7 @@ function ModalStatus({ modalContent, modalOpen, setModalOpen }) {
 }
 
 function RegistrationForm() {
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
@@ -78,7 +80,7 @@ function RegistrationForm() {
         type: "success",
       });
 
-      console.log(data);
+      setTimeout(() => navigate("/home", { replace: true }), 1500);
     } catch (err) {
       setModalContent({
         icon: CircleX,
