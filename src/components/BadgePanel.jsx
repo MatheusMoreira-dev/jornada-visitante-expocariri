@@ -16,7 +16,7 @@ function BadgePanel({ badges = [] }) {
         <ProgressValue>{() => `${atual}/${total}`}</ProgressValue>
       </Progress>
 
-      <div className=" grid grid-cols-2 gap-2">
+      <div className=" grid gap-2">
         {badges.map((v) => (
           <BadgeCard badge={v}></BadgeCard>
         ))}
