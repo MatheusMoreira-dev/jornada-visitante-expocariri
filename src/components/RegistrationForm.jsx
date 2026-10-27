@@ -36,6 +36,7 @@ function RegistrationForm() {
       celular: "55",
       cidade: "",
       perguntaConhecerPlanos: "",
+      perguntaAutorizarContato: "",
     },
   });
 
@@ -187,6 +188,54 @@ function RegistrationForm() {
                           <FieldTitle>Já possuo plano de saúde.</FieldTitle>
                         </FieldContent>
                         <RadioGroupItem value={"já possue"}></RadioGroupItem>
+                      </Field>
+                    </FieldLabel>
+                  </RadioGroup>
+                </Field>
+
+                <p className="text-xs text-destructive mt-1">
+                  {fieldState.error?.message}
+                </p>
+              </div>
+            )}
+          ></Controller>
+
+          <Controller
+            name="perguntaAutorizarContato"
+            control={control}
+            rules={{
+              required: "Campos obrigatório!",
+              validate: "Selecione um campo válido!",
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <Field>
+                  <FieldLabel>
+                    Você autoriza a equipe da Unimed Cariri a entrar em contato
+                    para apresentar informações sobre planos de saúde e
+                    possíveis propostas comerciais?
+                  </FieldLabel>
+
+                  <RadioGroup
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    className="grid grid-cols-2"
+                  >
+                    <FieldLabel>
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Sim</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem value={"sim"}></RadioGroupItem>
+                      </Field>
+                    </FieldLabel>
+
+                    <FieldLabel>
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Não</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem value={"não"}></RadioGroupItem>
                       </Field>
                     </FieldLabel>
                   </RadioGroup>

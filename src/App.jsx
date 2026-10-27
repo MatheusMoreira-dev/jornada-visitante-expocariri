@@ -4,7 +4,7 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="bg-background h-dvh w-full relative overflow-hidden">
+    <div className="bg-background h-dvh w-full relative overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary">
       <Auth></Auth>
     </div>
   );
