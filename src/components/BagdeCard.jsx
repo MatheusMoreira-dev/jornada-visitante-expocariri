@@ -9,25 +9,27 @@ import {
   ItemTitle,
 } from "@/components/ui/item";
 
-import { LockKeyhole } from "lucide-react";
+import { FaLock } from "react-icons/fa6";
 
 function BadgeCard({ badge }) {
   return (
     <div className="relative">
-      <Item variant="outline" className="border-secondary shadow-sm bg-surface">
+      <Item variant="outline" className=" shadow-md bg-surface">
         <ItemMedia>
           <BadgeIcon badge={badge}></BadgeIcon>
         </ItemMedia>
 
         <ItemContent>
           <ItemTitle>{badge.name}</ItemTitle>
-          <ItemDescription>{badge.description}</ItemDescription>
+          <ItemDescription className="line-clamp-3">
+            {badge.description}
+          </ItemDescription>
         </ItemContent>
       </Item>
 
       {badge.blocked && (
         <div className="absolute inset-0 z-10 gap-2 rounded-xl bg-zinc-500/20 cursor-not-allowed">
-          <LockKeyhole className="size-5 text-red-500 absolute top-3 right-3" />
+          <FaLock className="size-4 text-quaternary absolute top-3 right-3" />
         </div>
       )}
     </div>

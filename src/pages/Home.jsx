@@ -41,9 +41,7 @@ const badges = [
 function Home() {
   return (
     <div className="max-w-5xl flex h-full flex-col overflow-hidden">
-      <Header></Header>
       <BadgePanel badges={badges}></BadgePanel>
-      <footer className="h-8 bg-primary"></footer>
     </div>
   );
 }
