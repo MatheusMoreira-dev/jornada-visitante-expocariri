@@ -1,6 +1,6 @@
 function BadgeIcon({ badge }) {
   return (
-    <div className="rounded-full overflow-hidden size-20 p-2 bg-white/10 ring-1 ring-white/40 backdrop-blur-xl">
+    <div className="rounded-full overflow-hidden size-20 p-2 ring ring-zinc-300 shadow-xl">
       <img
         src={badge.icon}
         className={`pointer-events-none size-full object-center object-cover ${badge.blocked && "grayscale"}`}

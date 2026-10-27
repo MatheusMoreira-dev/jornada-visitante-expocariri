@@ -6,10 +6,13 @@ import {
   ProgressValue,
 } from "@/components/ui/progress";
 
-import { QrCodeIcon, Trophy } from "lucide-react";
+import { QrCodeIcon } from "lucide-react";
 
 import { Button } from "./ui/button";
-import { useState } from "react";
+
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
+import QRCodeReader from "./QRCodeReader";
 
 function BadgePanel({ badges = [] }) {
   let [atual, total] = [3, 5];
@@ -21,14 +24,22 @@ function BadgePanel({ badges = [] }) {
         <ProgressValue></ProgressValue>
       </Progress>
 
-      <div className="flex justify-end">
-        <Button
-          variant="outline"
-          className="ring shadow-sm rounded-sm w-full py-5 max-w-sm text-sm font-bold text-primary"
-        >
-          <QrCodeIcon></QrCodeIcon>
-          Escanear
-        </Button>
+      <div className="flex w-full">
+        <Dialog>
+          <DialogTrigger className="w-full">
+            <Button
+              variant="outline"
+              className="ring shadow-sm rounded-sm w-full py-5 max-w-sm text-sm font-bold text-primary"
+            >
+              <QrCodeIcon></QrCodeIcon>
+              Escanear
+            </Button>
+          </DialogTrigger>
+
+          <DialogContent>
+            <QRCodeReader></QRCodeReader>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="grid gap-2 overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary px-1">
