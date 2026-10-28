@@ -38,6 +38,8 @@ import { upperFirstLetter } from "@/utils/str.js";
 import { useState } from "react";
 import { replace, useNavigate } from "react-router";
 
+import { listAvailableBadges } from "@/services/api";
+
 function ModalStatus({ modalContent, modalOpen, setModalOpen }) {
   const Icon = modalContent?.icon;
 
@@ -72,7 +74,14 @@ function RegistrationForm() {
     setModalContent({ type: "loading" });
 
     try {
-      await cadastrar({ data });
+      let badges = await listAvailableBadges();
+      badges = Object.fromEntries(
+        Object.keys(badges).map((id) => [id, { blocked: true }]),
+      );
+
+      const payload = { ...data, badges };
+
+      await cadastrar({ data: payload });
       setModalContent({
         icon: CheckCircle,
         title: "Cadastro concluído!",
