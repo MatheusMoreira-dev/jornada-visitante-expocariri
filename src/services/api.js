@@ -1,9 +1,7 @@
 import { db } from "@/services/firebase.js";
-import { ref, set, get } from "firebase/database";
+import { ref, set, get, update } from "firebase/database";
 
 async function cadastrar({ data }) {
-  console.log(data);
-
   const celular = data.celular.replace(/\D/g, "");
   const participantesRef = ref(db, `participantes/${celular}`);
 
@@ -15,6 +13,8 @@ async function cadastrar({ data }) {
     ...data,
     celular,
   });
+
+  return { celular, nome: data?.nome };
 }
 
 async function listAvailableBadges() {
@@ -55,6 +55,30 @@ async function listAvailableBadges() {
   return badges;
 }
 
-function login({ data }) {}
+async function login({ data }) {
+  const celular = data.celular.replace(/\D/g, "");
+  const participanteRef = ref(db, `participantes/${celular}`);
 
-export { cadastrar, login, listAvailableBadges };
+  const snapshot = await get(participanteRef);
+
+  if (!snapshot.exists()) {
+    throw new Error("Telefone não cadastrado.");
+  }
+
+  const participante = snapshot.val();
+
+  if (
+    participante.nome.trim().toLowerCase() !== data.nome.trim().toLowerCase()
+  ) {
+    throw new Error("Nome ou telefone incorreto.");
+  }
+
+  return participante;
+}
+
+async function unlockBadge({ celular, badgeID }) {
+  const caminho = `participantes/${celular}/badges/${badgeID}`;
+  await update(ref(db, caminho), { blocked: false });
+}
+
+export { cadastrar, login, listAvailableBadges, unlockBadge };

@@ -21,41 +21,15 @@ import { useEffect, useState } from "react";
 
 import QRCodeReader from "./QRCodeReader";
 
-function BadgePanel() {
+import { unlockBadge } from "@/services/api";
+
+function BadgePanel({ loadBadges, login }) {
   const [badges, setBadges] = useState({});
   const [scannerOpen, setScannerOpen] = useState(false);
 
-  // Carrega uma vez os dados da API
   useEffect(() => {
-    const dadosAPI = {
-      123456: {
-        icon: "/badgeIcons/sunflower.svg",
-        name: "Campo de girassol",
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-        assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
-        inventore asperiores aperiam, accusantium quibusdam quos beatae
-        voluptatum omnis dolorem reprehenderit? Consequuntur, aliquid beatae!`,
-        blocked: true,
-      },
-      32144214: {
-        icon: "/badgeIcons/sunflower.svg",
-        name: "Campo de girassol",
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-        assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
-        inventore asperiores aperiam, accusantium quibusdam quos beatae
-        voluptatum omnis dolorem reprehenderit? Consequuntur, aliquid beatae!`,
-        blocked: false,
-      },
-      4214214214: {
-        icon: "/badgeIcons/sunflower.svg",
-        name: "Campo de girassol",
-        description: `Lorem ipsum dolor sit`,
-        blocked: true,
-      },
-    };
-
-    setBadges(dadosAPI);
-  }, []);
+    setBadges(loadBadges);
+  }, [loadBadges]);
 
   const handleProgress = () => {
     const array = Object.values(badges);
@@ -77,6 +51,8 @@ function BadgePanel() {
     if (!Object.hasOwn(badges, badgeID)) {
       return;
     }
+
+    unlockBadge({ celular: login, badgeID });
 
     setBadges((prev) => ({
       ...prev,

@@ -31,7 +31,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { cadastrar } from "@/services/api";
+import { cadastrar, login } from "@/services/api";
 import { useForm, Controller } from "react-hook-form";
 
 import { upperFirstLetter } from "@/utils/str.js";
@@ -80,8 +80,8 @@ function RegistrationForm() {
       );
 
       const payload = { ...data, badges };
-
       await cadastrar({ data: payload });
+
       setModalContent({
         icon: CheckCircle,
         title: "Cadastro concluído!",
@@ -89,7 +89,18 @@ function RegistrationForm() {
         type: "success",
       });
 
-      setTimeout(() => navigate("/home", { replace: true }), 1500);
+      sessionStorage.setItem(
+        "participante",
+        JSON.stringify({ nome: payload.nome, celular: payload.celular }),
+      );
+
+      setTimeout(
+        () =>
+          navigate("/home", {
+            replace: true,
+          }),
+        1500,
+      );
     } catch (err) {
       setModalContent({
         icon: CircleX,
