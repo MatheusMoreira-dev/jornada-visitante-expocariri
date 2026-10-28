@@ -29,7 +29,7 @@ function BadgePanel() {
   useEffect(() => {
     const dadosAPI = {
       123456: {
-        icon: "./src/assets/sunflower.svg",
+        icon: "/badgeIcons/sunflower.svg",
         name: "Campo de girassol",
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
         assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
@@ -38,7 +38,7 @@ function BadgePanel() {
         blocked: true,
       },
       32144214: {
-        icon: "./src/assets/sunflower.svg",
+        icon: "/badgeIcons/sunflower.svg",
         name: "Campo de girassol",
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
         assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
@@ -47,7 +47,7 @@ function BadgePanel() {
         blocked: false,
       },
       4214214214: {
-        icon: "./src/assets/sunflower.svg",
+        icon: "/badgeIcons/sunflower.svg",
         name: "Campo de girassol",
         description: `Lorem ipsum dolor sit`,
         blocked: true,
