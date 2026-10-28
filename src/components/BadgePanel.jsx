@@ -24,6 +24,7 @@ import QRCodeReader from "./QRCodeReader";
 import { unlockBadge } from "@/services/api";
 
 function BadgePanel({ loadBadges, login }) {
+  const [finish, setFinish] = useState(false);
   const [badges, setBadges] = useState({});
   const [scannerOpen, setScannerOpen] = useState(false);
 

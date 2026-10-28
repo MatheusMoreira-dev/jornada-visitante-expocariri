@@ -22,33 +22,27 @@ async function listAvailableBadges() {
     "21ada16d": {
       icon: "/badgeIcons/sunflower.svg",
       name: "Hidrate-se!",
-      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-        assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
-        inventore asperiores aperiam, accusantium quibusdam quos beatae
-        voluptatum omnis dolorem reprehenderit? Consequuntur, aliquid beatae!`,
+      description: `Seu corpo merece esse gole de cuidado!`,
     },
     "5e9bbe37": {
       icon: "/badgeIcons/sunflower.svg",
       name: "Proteja-se do sol!",
-      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-        assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
-        inventore asperiores aperiam, accusantium quibusdam quos beatae
-        voluptatum omnis dolorem reprehenderit? Consequuntur, aliquid beatae!`,
+      description: `Passe o protetor solar: curta o dia sem descuidar da pele! `,
     },
     "12914c30": {
       icon: "/badgeIcons/sunflower.svg",
-      name: "Biopedância",
-      description: `Lorem ipsum dolor sit`,
+      name: "Bioimpedância",
+      description: `Seu corpo tem muito a te contar. Que tal conhecer mais sobre ele?`,
     },
     "1829caf0": {
       icon: "/badgeIcons/sunflower.svg",
-      name: "Check-in rápido",
-      description: `Lorem ipsum dolor sit`,
+      name: "Dê uma olhada na sua saúde!",
+      description: `Pare um minutinho por você. Sua saúde merece esse cuidado!`,
     },
     "05dd0a10": {
       icon: "/badgeIcons/sunflower.svg",
-      name: "Campo de girassol",
-      description: `Lorem ipsum dolor sit`,
+      name: "Campo de girassóis",
+      description: `Entre os girassóis, aprecie a beleza e registre seu melhor ângulo!`,
     },
   };
 
