@@ -31,7 +31,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { cadastrar, enviarParaPlanilha } from "@/services/api";
+import { cadastrar } from "@/services/api";
 import { useForm, Controller } from "react-hook-form";
 
 import { upperFirstLetter } from "@/utils/str.js";
@@ -81,7 +81,6 @@ function RegistrationForm() {
 
       const payload = { ...data, badges, dataCadastro: Date.now() };
       await cadastrar({ data: payload });
-      await enviarParaPlanilha(payload);
 
       setModalContent({
         icon: CheckCircle,
@@ -103,6 +102,7 @@ function RegistrationForm() {
         1500,
       );
     } catch (err) {
+      console.log(err);
       setModalContent({
         icon: CircleX,
         title: "Erro no cadastro",

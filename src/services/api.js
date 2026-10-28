@@ -81,22 +81,4 @@ async function unlockBadge({ celular, badgeID, timeStamp }) {
   await update(ref(db, caminho), { blocked: false, timeStamp });
 }
 
-const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbwGmyzeEbcR3nj5rYzOFrj4Gilomobl9HDs8rWAtbp4PF6LX0J9NxsU1RRVX8W0u-g/exec";
-
-async function enviarParaPlanilha(dados) {
-  const response = await fetch(GAS_URL, {
-    method: "POST",
-    body: JSON.stringify(dados),
-  });
-
-  return response;
-}
-
-export {
-  cadastrar,
-  login,
-  listAvailableBadges,
-  unlockBadge,
-  enviarParaPlanilha,
-};
+export { cadastrar, login, listAvailableBadges, unlockBadge };

@@ -7,7 +7,9 @@ function Auth() {
     <Tabs className="w-full max-w-sm mx-auto py-5">
       <TabsList className="sticky top-2">
         <TabsTrigger value="cadastro">Cadastrar</TabsTrigger>
-        <TabsTrigger value="login">Entrar</TabsTrigger>
+        <TabsTrigger value="login" disabled>
+          Entrar
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="cadastro">
