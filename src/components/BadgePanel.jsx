@@ -22,8 +22,8 @@ import { useEffect, useState } from "react";
 import QRCodeReader from "./QRCodeReader";
 
 function BadgePanel() {
-  let [atual, total] = [3, 5];
   const [badges, setBadges] = useState({});
+  const [scannerOpen, setScannerOpen] = useState(false);
 
   // Carrega uma vez os dados da API
   useEffect(() => {
@@ -57,6 +57,18 @@ function BadgePanel() {
     setBadges(dadosAPI);
   }, []);
 
+  const handleProgress = () => {
+    const array = Object.values(badges);
+    const totalBlockeds = array.filter((v) => v.blocked).length;
+
+    return {
+      actualProgress: array.length - totalBlockeds,
+      totalBadges: array.length,
+    };
+  };
+
+  const progress = handleProgress();
+
   function onSucessScan(result) {
     const str = result[0].rawValue;
     const json = JSON.parse(str);
@@ -73,6 +85,8 @@ function BadgePanel() {
         blocked: false,
       },
     }));
+
+    setScannerOpen(false);
   }
 
   function onErrorScan(err) {
@@ -81,13 +95,16 @@ function BadgePanel() {
 
   return (
     <div className="grid flex-1 min-h-0 gap-3 max-w-sm mx-auto p-2 my-5">
-      <Progress value={(atual / total) * 100} className="w-full max-w-sm">
-        <ProgressLabel>{`${atual}/${total}`}</ProgressLabel>
+      <Progress
+        value={(progress.actualProgress / progress.totalBadges) * 100}
+        className="w-full max-w-sm"
+      >
+        <ProgressLabel>{`${progress.actualProgress}/${progress.totalBadges}`}</ProgressLabel>
         <ProgressValue></ProgressValue>
       </Progress>
 
       <div className="flex w-full">
-        <Dialog>
+        <Dialog open={scannerOpen} onOpenChange={setScannerOpen}>
           <DialogTrigger className="w-full">
             <Button
               variant="outline"
