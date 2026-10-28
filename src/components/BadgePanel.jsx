@@ -10,19 +10,69 @@ import { QrCodeIcon } from "lucide-react";
 
 import { Button } from "./ui/button";
 
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+} from "@/components/ui/dialog";
+
+import { useEffect, useState } from "react";
 
 import QRCodeReader from "./QRCodeReader";
 
-function BadgePanel({ badges = [] }) {
+function BadgePanel() {
   let [atual, total] = [3, 5];
+  const [badges, setBadges] = useState({});
+
+  // Carrega uma vez os dados da API
+  useEffect(() => {
+    const dadosAPI = {
+      123456: {
+        icon: "./src/assets/sunflower.svg",
+        name: "Campo de girassol",
+        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+        assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
+        inventore asperiores aperiam, accusantium quibusdam quos beatae
+        voluptatum omnis dolorem reprehenderit? Consequuntur, aliquid beatae!`,
+        blocked: true,
+      },
+      32144214: {
+        icon: "./src/assets/sunflower.svg",
+        name: "Campo de girassol",
+        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+        assumenda repellendus fugiat dolore, eligendi perspiciatis placeat
+        inventore asperiores aperiam, accusantium quibusdam quos beatae
+        voluptatum omnis dolorem reprehenderit? Consequuntur, aliquid beatae!`,
+        blocked: false,
+      },
+      4214214214: {
+        icon: "./src/assets/sunflower.svg",
+        name: "Campo de girassol",
+        description: `Lorem ipsum dolor sit`,
+        blocked: true,
+      },
+    };
+
+    setBadges(dadosAPI);
+  }, []);
 
   function onSucessScan(result) {
     const str = result[0].rawValue;
     const json = JSON.parse(str);
+    const badgeID = json?.badgeID;
 
-    console.log(json);
-    alert(str);
+    if (!Object.hasOwn(badges, badgeID)) {
+      return;
+    }
+
+    setBadges((prev) => ({
+      ...prev,
+      [badgeID]: {
+        ...prev[badgeID],
+        blocked: false,
+      },
+    }));
   }
 
   function onErrorScan(err) {
@@ -49,6 +99,8 @@ function BadgePanel({ badges = [] }) {
           </DialogTrigger>
 
           <DialogContent>
+            <DialogHeader></DialogHeader>
+
             <QRCodeReader
               onSucess={onSucessScan}
               onError={onErrorScan}
@@ -58,8 +110,8 @@ function BadgePanel({ badges = [] }) {
       </div>
 
       <div className="grid gap-2 overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary px-1">
-        {badges.map((v) => (
-          <BadgeCard badge={v}></BadgeCard>
+        {Object.entries(badges).map(([key, values]) => (
+          <BadgeCard key={key} badge={values}></BadgeCard>
         ))}
       </div>
     </div>
