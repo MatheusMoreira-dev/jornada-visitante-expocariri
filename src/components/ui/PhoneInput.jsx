@@ -5,6 +5,8 @@ function PhoneInput({ value, onChange, ...props }) {
     <IMaskInput
       {...props}
       mask={"+00 (00) 00000-0000"}
+      type="tel"
+      inputMode="numeric"
       unmask={true}
       value={value}
       onAccept={(v) => onChange?.(v)}
