@@ -31,7 +31,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { cadastrar, login } from "@/services/api";
+import { cadastrar, enviarParaPlanilha } from "@/services/api";
 import { useForm, Controller } from "react-hook-form";
 
 import { upperFirstLetter } from "@/utils/str.js";
@@ -79,8 +79,9 @@ function RegistrationForm() {
         Object.keys(badges).map((id) => [id, { blocked: true }]),
       );
 
-      const payload = { ...data, badges };
+      const payload = { ...data, badges, dataCadastro: Date.now() };
       await cadastrar({ data: payload });
+      await enviarParaPlanilha(payload);
 
       setModalContent({
         icon: CheckCircle,

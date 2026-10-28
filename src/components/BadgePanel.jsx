@@ -52,7 +52,7 @@ function BadgePanel({ loadBadges, login }) {
       return;
     }
 
-    unlockBadge({ celular: login, badgeID });
+    unlockBadge({ celular: login, badgeID, timeStamp: Date.now() });
 
     setBadges((prev) => ({
       ...prev,

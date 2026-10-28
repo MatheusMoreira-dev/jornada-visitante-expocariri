@@ -76,9 +76,27 @@ async function login({ data }) {
   return participante;
 }
 
-async function unlockBadge({ celular, badgeID }) {
+async function unlockBadge({ celular, badgeID, timeStamp }) {
   const caminho = `participantes/${celular}/badges/${badgeID}`;
-  await update(ref(db, caminho), { blocked: false });
+  await update(ref(db, caminho), { blocked: false, timeStamp });
 }
 
-export { cadastrar, login, listAvailableBadges, unlockBadge };
+const GAS_URL =
+  "https://script.google.com/macros/s/AKfycbwGmyzeEbcR3nj5rYzOFrj4Gilomobl9HDs8rWAtbp4PF6LX0J9NxsU1RRVX8W0u-g/exec";
+
+async function enviarParaPlanilha(dados) {
+  const response = await fetch(GAS_URL, {
+    method: "POST",
+    body: JSON.stringify(dados),
+  });
+
+  return response;
+}
+
+export {
+  cadastrar,
+  login,
+  listAvailableBadges,
+  unlockBadge,
+  enviarParaPlanilha,
+};
