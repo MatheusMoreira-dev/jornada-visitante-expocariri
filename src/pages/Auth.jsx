@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import RegistrationForm from "@/components/RegistrationForm";
+import LoginForm from "@/components/LoginForm";
 
 function Auth() {
   return (
@@ -11,6 +12,10 @@ function Auth() {
 
       <TabsContent value="cadastro">
         <RegistrationForm></RegistrationForm>
+      </TabsContent>
+
+      <TabsContent value="login">
+        <LoginForm></LoginForm>
       </TabsContent>
     </Tabs>
   );

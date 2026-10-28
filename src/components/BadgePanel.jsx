@@ -108,7 +108,7 @@ function BadgePanel() {
           <DialogTrigger className="w-full">
             <Button
               variant="outline"
-              className="ring shadow-sm rounded-sm w-full py-5 max-w-sm text-sm font-bold text-primary"
+              className="border border-primary border-dashed shadow-sm rounded-sm w-full py-5 max-w-sm text-sm font-bold text-primary"
             >
               <QrCodeIcon></QrCodeIcon>
               Escanear
