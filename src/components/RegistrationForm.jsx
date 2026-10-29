@@ -39,6 +39,7 @@ import { useState } from "react";
 import { replace, useNavigate } from "react-router";
 
 import { listAvailableBadges } from "@/services/api";
+import { recuperarUsuario, criarUsuario } from "@/services/auth";
 
 function ModalStatus({ modalContent, modalOpen, setModalOpen }) {
   const Icon = modalContent?.icon;
@@ -93,6 +94,10 @@ function RegistrationForm() {
         "participante",
         JSON.stringify({ nome: payload.nome, celular: payload.celular }),
       );
+
+      const usuario = await recuperarUsuario();
+      const testeParticipante = usuario ?? (await criarUsuario());
+      console.log(testeParticipante);
 
       setTimeout(
         () =>
