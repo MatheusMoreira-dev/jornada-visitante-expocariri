@@ -89,7 +89,7 @@ function RegistrationForm() {
         type: "success",
       });
 
-      sessionStorage.setItem(
+      localStorage.setItem(
         "participante",
         JSON.stringify({ nome: payload.nome, celular: payload.celular }),
       );

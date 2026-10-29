@@ -4,7 +4,9 @@ import { login, listAvailableBadges } from "@/services/api";
 
 function Home() {
   const participante = JSON.parse(
-    sessionStorage.getItem("participante") || "null",
+    sessionStorage.getItem("participante") ||
+      localStorage.getItem("participante") ||
+      "null",
   );
 
   const [dados, setDados] = useState(null);
