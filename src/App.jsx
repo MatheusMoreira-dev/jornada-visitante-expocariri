@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
+
+      <Analytics />
     </div>
   );
 }
