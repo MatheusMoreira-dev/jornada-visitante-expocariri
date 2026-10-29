@@ -272,7 +272,7 @@ function RegistrationForm() {
                             </FieldTitle>
                           </FieldContent>
                           <RadioGroupItem
-                            value={"já possue plano unimed"}
+                            value={"já possui plano unimed"}
                           ></RadioGroupItem>
                         </Field>
                       </FieldLabel>
