@@ -25,6 +25,8 @@ function Home() {
         ]),
       );
 
+      availableBadges["05dd0a10"].blocked = false;
+
       setDados(data);
       setBadges(availableBadges);
     }

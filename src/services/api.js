@@ -17,14 +17,6 @@ async function cadastrar({ data }) {
   return { celular, nome: data?.nome };
 }
 
-/*
-  "05dd0a10": {
-      icon: "/badgeIcons/sunflower.svg",
-      name: "Campo de girassóis",
-      description: `Entre os girassóis, aprecie a beleza e registre seu melhor ângulo!`,
-    },
-*/
-
 async function listAvailableBadges() {
   const badges = {
     "21ada16d": {
@@ -46,6 +38,11 @@ async function listAvailableBadges() {
       icon: "/badgeIcons/sunflower.svg",
       name: "Dê uma olhada na sua saúde!",
       description: `Pare um minutinho por você. Sua saúde merece esse cuidado!`,
+    },
+    "05dd0a10": {
+      icon: "/badgeIcons/sunflower.svg",
+      name: "Campo de girassóis",
+      description: `Entre os girassóis, aprecie a beleza e registre seu melhor ângulo!`,
     },
   };
 

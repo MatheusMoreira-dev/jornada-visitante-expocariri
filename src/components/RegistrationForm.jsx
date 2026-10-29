@@ -267,12 +267,10 @@ function RegistrationForm() {
                       <FieldLabel className="col-span-2 justify-self-center">
                         <Field orientation="horizontal">
                           <FieldContent>
-                            <FieldTitle>
-                              Já possuo plano de saúde Unimed.
-                            </FieldTitle>
+                            <FieldTitle>Já possuo plano de saúde.</FieldTitle>
                           </FieldContent>
                           <RadioGroupItem
-                            value={"já possui plano unimed"}
+                            value={"já possuo plano de saúde"}
                           ></RadioGroupItem>
                         </Field>
                       </FieldLabel>
