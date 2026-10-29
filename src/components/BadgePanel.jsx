@@ -131,26 +131,26 @@ function BadgePanel({ loadBadges, login }) {
 
       {/* Modal de conclusão */}
       <Dialog open={finish} onOpenChange={setFinish}>
-        <DialogContent className="text-center overflow-hidden">
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-primary text-center">
+            <DialogTitle className="text-center text-2xl font-bold text-primary">
               Parabéns! 🌻
             </DialogTitle>
 
-            <DialogDescription className="text-center text-base">
+            <DialogDescription className="text-center">
               Você desbloqueou todas as insígnias!
               <br />
               Sua jornada foi concluída com sucesso.
             </DialogDescription>
           </DialogHeader>
 
-          <div className="text-6xl py-4 animate-bounce">🏆🌻</div>
-
           <Button onClick={() => setFinish(false)} className="w-full">
             Continuar
           </Button>
         </DialogContent>
       </Dialog>
+
+      {finish && <SunflowerCelebration />}
 
       {/* Girassóis decorativos */}
       {finish && <SunflowerCelebration />}
