@@ -16,7 +16,7 @@ function SunflowerCelebration() {
       <div className="sunflower-sway-right absolute bottom-0 right-[-4%] h-[65vh] w-[clamp(150px,30vw,330px)] origin-bottom-center sm:h-[75vh]">
         <div className="sunflower-grow-delayed h-full w-full origin-bottom">
           <img
-            src="/sunflower.svg"
+            src="/sunflower_celebration.svg"
             alt=""
             className="h-full w-full scale-x-[-1] object-contain object-bottom"
           />
