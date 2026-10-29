@@ -174,3 +174,38 @@
     @apply font-sans;
   }
 }
+
+@keyframes grow-stem {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes grow-flower {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.animate-grow-stem {
+  animation: grow-stem 1.5s ease-out both;
+}
+
+.animate-grow-flower {
+  animation: grow-flower 0.7s ease-out both;
+}
